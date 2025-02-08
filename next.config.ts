@@ -1,26 +1,28 @@
-import nextIntl from "next-intl/plugin";
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const config: NextConfig = {
   images: {
-    domains: ["localhost", "127.0.0.1", "admin.towtruck.altiment.com"],
+    domains: ['localhost', '127.0.0.1', 'admin.towtruck.altiment.com'],
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**",
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
       },
       {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "1337",
-        pathname: "/uploads/**",
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '1337',
+        pathname: '/uploads/**',
       },
       {
-        protocol: "https",
-        hostname: "admin.towtruck.altiment.com",
-        pathname: "/uploads/**",
+        protocol: 'https',
+        hostname: 'admin.towtruck.altiment.com',
+        pathname: '/uploads/**',
       },
     ],
   },
@@ -32,8 +34,8 @@ const config: NextConfig = {
   redirects: async () => {
     return [
       {
-        source: "/",
-        destination: "/uk",
+        source: '/',
+        destination: '/uk',
         permanent: true,
       },
     ];
@@ -41,10 +43,9 @@ const config: NextConfig = {
 
   experimental: {
     serverActions: {
-      bodySizeLimit: "2mb",
+      bodySizeLimit: '2mb',
     },
   },
 };
 
-const withNextIntl = nextIntl("./i18n.ts");
 export default withNextIntl(config);
