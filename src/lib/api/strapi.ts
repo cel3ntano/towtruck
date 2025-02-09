@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Locale } from '@/config/i18n';
+import { type Locale } from '@/i18n/routing';
 
 const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
@@ -46,6 +46,29 @@ export async function fetchAPI<T>(
           },
           contacts_section: {
             populate: ['phone_numbers'],
+          },
+          slider_section: {
+            populate: {
+              slider_images: { populate: ['slider_image'] },
+            },
+          },
+          features_section: {
+            populate: {
+              features_list: {
+                populate: { feature_icon: { populate: ['icon_file'] } },
+              },
+            },
+          },
+          transportable_items_section: {
+            populate: {
+              transportable_items_list: {
+                populate: {
+                  transportable_item_media: {
+                    populate: ['icon_file', 'image_file'],
+                  },
+                },
+              },
+            },
           },
         },
         ...params,

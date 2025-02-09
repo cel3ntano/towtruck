@@ -20,40 +20,50 @@ export interface StrapiImage {
 
 export interface SliderImage {
   id: number;
-  attributes: {
-    url: string;
-    alternativeText: string;
-  };
+  localized_alt_text: string;
+  slider_image: StrapiImage;
 }
 
 export interface HomePageData {
-  documentId: string;
+  id: number;
   locale: string;
   header_section: { title: string; description: string };
   hero_section: {
     hero_image: StrapiImage;
     hero_tagline: string;
   };
-  tagline: string;
-  features: Array<{
+  contacts_section: {
     id: number;
-    icon: string;
     title: string;
     description: string;
-  }>;
-  transportableItems: Array<{
-    id: number;
-    image: StrapiImage;
-    title: string;
-    description: string;
-  }>;
-  contact: {
-    title: string;
-    description: string;
-    phoneNumbers: string[];
+    phone_numbers: Array<{
+      id: number;
+      phone_number: string;
+    }>;
   };
-  sliderImages: {
-    data: SliderImage[];
+  slider_section: {
+    id: number;
+    title: string;
+    slider_images: SliderImage[];
+  };
+  features_section: {
+    id: number;
+    title: string;
+    features_list: Array<{
+      id: number;
+      feature_text: string;
+      feature_icon: StrapiImage;
+      svg_base64: string;
+    }>;
+  };
+  transportable_items_section: {
+    id: number;
+    title: string;
+    transportable_items_list: Array<{
+      id: number;
+      transportable_item_title: string;
+      transportable_item_media: string;
+    }>;
   };
 }
 
