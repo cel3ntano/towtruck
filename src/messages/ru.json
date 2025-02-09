@@ -17,5 +17,13 @@
     "general": "Что-то пошло не так",
     "notFound": "Страница не найдена",
     "loading": "Ошибка загрузки"
+  },
+  "components": {
+    "imageSlider": {
+      "fallbackAlt": "Эвакуатор Днепр 24/7",
+      "previousImage": "Предыдущее изображение",
+      "nextImage": "Следующее изображение",
+      "goToImage": "Перейти к изображению {number}"
+    }
   }
 }

@@ -17,5 +17,13 @@
     "general": "Щось пішло не так",
     "notFound": "Сторінку не знайдено",
     "loading": "Помилка завантаження"
+  },
+  "components": {
+    "imageSlider": {
+      "fallbackAlt": "Евакуатор Дніпро 24/7",
+      "previousImage": "Попереднє зображення",
+      "nextImage": "Наступне зображення",
+      "goToImage": "Перейти до зображення {number}"
+    }
   }
 }
