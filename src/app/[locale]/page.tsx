@@ -2,12 +2,11 @@ import { Suspense } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Contacts } from '@/components/home/Contacts';
 import { Hero } from '@/components/home/Hero';
-import { TaglineSection } from '@/components/home/TaglineSection';
 import { ImageSlider } from '@/components/home/ImageSlider';
-import { AboutSection } from '@/components/home/AboutSection';
+import { Features } from '@/components/home/Features';
 import { TransportableItems } from '@/components/home/TransportableItems';
 import { fetchAPI } from '@/lib/api/strapi';
-import { type Locale } from '@/config/i18n';
+import { type Locale } from '@/i18n/routing';
 import { type HomePageData, type StrapiResponse } from '@/types/strapi';
 
 interface HomePageProps {
@@ -40,23 +39,29 @@ export default async function HomePage({ params }: HomePageProps) {
         image={data.hero_section.hero_image}
         tagline={data.hero_section.hero_tagline}
       />
-      {/* <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
-        <TaglineSection tagline={data.tagline} />
-      </Suspense> */}
-      {/* <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
+      <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
         <ImageSlider
-          images={data.sliderImages.data.map(image => ({
-            url: image.attributes.url,
-            alt: image.attributes.alternativeText,
-          }))}
+          title={data.slider_section.title}
+          images={data.slider_section.slider_images}
         />
-      </Suspense> */}
-      {/* <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
-        <AboutSection features={data.features} />
-      </Suspense> */}
-      {/* <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
-        <TransportableItems items={data.transportableItems} />
-      </Suspense> */}
+      </Suspense>
+      <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
+        <Features
+          features={data.features_section.features_list}
+          title={data.features_section.title}
+        />
+      </Suspense>
+      <Suspense fallback={<div className='h-96 animate-pulse bg-gray-200' />}>
+        <TransportableItems
+          title={data.transportable_items_section.title}
+          items={data.transportable_items_section.transportable_items_list}
+        />
+      </Suspense>
+      <Contacts
+        title={data.contacts_section?.title}
+        description={data.contacts_section?.description}
+        phoneNumbers={data.contacts_section.phone_numbers}
+      />
     </main>
   );
 }

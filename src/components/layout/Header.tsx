@@ -9,12 +9,16 @@ export function Header({ title, description }: HeaderProps) {
   return (
     <header className='relative bg-background py-6'>
       <div className='container mx-auto px-4'>
-        <div className='flex items-center justify-cente'>
-          <div className='flex-1'>
-            <h1 className='text-4xl font-bold text-foreground'>{title}</h1>
-            <p className='mt-2 text-lg text-foreground/80'>{description}</p>
+        <div className='flex flex-col items-center'>
+          <div className='mb-3 flex items-center gap-1 sm:gap-4'>
+            <h1 className='text-xl sm:text-4xl font-bold text-yellow-500'>
+              {title}
+            </h1>
+            <LanguageSwitcher />
           </div>
-          <LanguageSwitcher />
+          <p className='max-w-2xl text-center text-xl text-yellow-500'>
+            {description}
+          </p>
         </div>
       </div>
     </header>
